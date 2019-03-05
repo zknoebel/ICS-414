@@ -2,10 +2,10 @@
   padding-top: 55px;
 }
 
-.app-home {
-  background-color: purple;
-}
-
 .app-green {
   background-color: green;
+}
+
+.app-home-grid {
+  height: 100%;
 }
