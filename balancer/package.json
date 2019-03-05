@@ -1,0 +1,20 @@
+{
+  "name": "balancer",
+  "version": "1.0.0",
+  "main": "app/main.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^4.0.7",
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "semantic-ui-css": "^2.4.1"
+  }
+}

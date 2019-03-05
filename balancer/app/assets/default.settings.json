@@ -1,0 +1,7 @@
+{
+  "gamingAllowance": 60,
+  "workAllowance": 120,
+  "activeModeDuration": 30,
+  "enableYeelightConnectivity": false,
+  "yeelightLocalAddress": ""
+}
