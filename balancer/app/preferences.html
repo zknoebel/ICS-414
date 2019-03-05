@@ -57,7 +57,7 @@
       <div class="field">
         <label>
           <h5 class="ui header">
-            Active Mode Duration
+            Active Mode Duration (min)
             <div class="sub header">
               Controls the time that a mode will persist for when toggled when not locked, given in minutes.
               For example, when you enter gaming mode without lock, it'll persist for 15 minutes before deactivating.
@@ -100,6 +100,10 @@
 
   </div>
 
+  <script>
+    // Require files to run in this process
+    const settings = require('./scripts/preferences.js');
+  </script>
 </body>
 
 </html>
