@@ -4,7 +4,7 @@ import { Image } from 'semantic-ui-react';
 export default class FullWidthImage extends React.Component {
   render() {
     return (
-        <Image fluid src='//cdn.shopify.com/s/files/1/1035/5187/t/5/assets/slide1.jpg?1080290453015017671' />
+        <Image fluid src='//www.feit.com/wp-content/uploads/2017/04/LED_Filmanet_Color_Bulbs_bg-1-800x400.jpg' />
     );
   }
 }

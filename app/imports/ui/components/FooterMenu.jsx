@@ -10,9 +10,9 @@ export default class FooterMenu extends React.Component {
               NAVIGATION
               <hr />
               <List>
-                <List.Item>About us</List.Item>
-                <List.Item>Videos</List.Item>
-                <List.Item>Store Locations</List.Item>
+                <List.Item>Main Menu</List.Item>
+                <List.Item>Connect</List.Item>
+                <List.Item>Settings</List.Item>
               </List>
             </Grid.Column>
 
@@ -20,9 +20,8 @@ export default class FooterMenu extends React.Component {
               MAIN MENU
               <hr />
               <List>
-                <List.Item>Men</List.Item>
-                <List.Item>Women</List.Item>
-                <List.Item>Kids</List.Item>
+                <List.Item>Work</List.Item>
+                <List.Item>Fun</List.Item>
               </List>
             </Grid.Column>
 
@@ -30,10 +29,10 @@ export default class FooterMenu extends React.Component {
               CONNECT
               <hr />
               <List>
-                <List.Item>Sign up for the latest updates</List.Item>
+                <List.Item>Connect the application to your light bulb</List.Item>
                 <List.Item>
-                  <Input placeholder="Enter email address" />
-                  <Label color="black">Join</Label>
+                  <Input placeholder="Enter light bulb information" />
+                  <Label color="black">Connect</Label>
                 </List.Item>
               </List>
             </Grid.Column>
