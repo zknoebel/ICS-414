@@ -1,0 +1,23 @@
+.app-main {
+  padding-top: 55px;
+}
+
+.app-home-grid {
+  height: 100%;
+}
+
+.app-width {
+  width: 100%;
+}
+
+.app-height {
+  height: 100%;
+}
+
+.app-home-lock-btn {
+  width: 20%;
+}
+
+.app-home-toggle-btn {
+  width: 60%;
+}

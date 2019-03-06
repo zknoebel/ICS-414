@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" href="">
+  <link rel="stylesheet" type="text/css" href="../node_modules/semantic-ui-css/semantic.min.css">
+  <script>window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min.js');</script>
+  <script src="../node_modules/semantic-ui-css/semantic.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="styles.css">
+
+  <title>Balancer</title>
+</head>
+
+<body>
+  <!-- Navigation bar -->
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <div class="header item">Balancer</div>
+      <a class="item" href="./home.html">Home</a>
+      <a class="item" href="./data.html">Data</a>
+      <a class="active item" href="#">Preferences</a>
+    </div>
+  </div>
+
+  <div class="ui container app-main">
+
+    <form class="ui form">
+      <h2 class="ui dividing header">Balancer Preferences</h2>
+
+      <div class="field">
+        <label>
+          <h5 class="ui header">
+            Gaming Allowance per Day (min)
+            <div class="sub header">Targeted amount of gaming, distraction, or fun time for the day, given in minutes.
+            </div>
+          </h5>
+        </label>
+        <input type="number" name="gamingAllowance" placeholder="60 minutes">
+      </div>
+
+      <div class="field">
+        <label>
+          <h5 class="ui header">
+            Work Allowance per Day (min)
+            <div class="sub header">Targeted amount of work time for the day, given in minutes.
+            </div>
+          </h5>
+        </label>
+        <input type="number" name="workAllowance" placeholder="120 minutes">
+      </div>
+
+      <div class="field">
+        <label>
+          <h5 class="ui header">
+            Active Mode Duration (min)
+            <div class="sub header">
+              Controls the time that a mode will persist for when toggled when not locked, given in minutes.
+              For example, when you enter gaming mode without lock, it'll persist for 15 minutes before deactivating.
+            </div>
+          </h5>
+        </label>
+        <input type="number" name="activeModeDuration" placeholder="30 minutes">
+      </div>
+
+      <h2 class="ui dividing header">IoT Yeelight Preferences</h2>
+
+      <div class="field">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="enableYeelightConnectivity">
+          <label>
+            <h5 class="ui header">
+              Enable Yeelight Connectivity
+              <div class="sub header">
+                Allows integration with a Yeelight smart bulb on your local network.
+              </div>
+            </h5>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>
+          <h5 class="ui header">
+            Yeelight Local Address
+            <div class="sub header">
+              Local IP address of Yeelight smart bulb on your network. Example: 192.168.200.70
+            </div>
+          </h5>
+        </label>
+        <input type="text" name="yeelightLocalAddress" placeholder="192.168.200.25">
+      </div>
+
+      <div class="ui green submit button">Update</div>
+    </form>
+
+  </div>
+
+  <script>
+    // Require files to run in this process
+    require('./scripts/preferences.js');
+  </script>
+</body>
+
+</html>
