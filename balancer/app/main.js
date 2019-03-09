@@ -20,7 +20,7 @@ function createWindow() {
 
 
   // Load the main page of app.
-  win.loadFile('./app/home.html');
+  win.loadFile('./app/resources/html/home.html');
 
   // Emitted when window is closed.
   win.on('closed', () => {

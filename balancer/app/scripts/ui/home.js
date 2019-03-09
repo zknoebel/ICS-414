@@ -17,7 +17,7 @@
   const { getBlendedSettingsSync } = require('./settings');
   const Buttons = require('./usageButtons');
 
-  const usageDbLocation = '../db/usage.db';
+  const usageDbLocation = '../resources/db/usage.db';
   const usageDb = new Datastore({
     filename: path.join(__dirname, usageDbLocation),
     timestampData: true,
