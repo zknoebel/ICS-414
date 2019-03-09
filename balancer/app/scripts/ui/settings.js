@@ -2,9 +2,29 @@
 
 const fs = require('fs');
 const path = require('path');
+const SimpleSchema = require('simpl-schema');
 
 const defaultSettingsPath = '../../resources/data/default.settings.json';
 const settingsPath = '../../resources/data/settings.json';
+
+// Prepare simple schema validation object.
+const settingsSchema = SimpleSchema({
+  gamingAllowance: {
+    type: SimpleSchema.Integer,
+  },
+  workAllowance: {
+    type: SimpleSchema.Integer,
+  },
+  activeModeDuration: {
+    type: SimpleSchema.Integer,
+  },
+  enableYeelightConnectivity: {
+    type: Boolean,
+  },
+  yeelightLocalAddress: {
+    type: String,
+  },
+}).newContext();
 
 /**
  * Returns JavaScript object containing default settings.
@@ -43,6 +63,8 @@ function setSettingsSync(settings) {
 }
 
 module.exports = {
+  getDefaultSettingsSync,
   getBlendedSettingsSync,
   setSettingsSync,
+  settingsSchema,
 };
