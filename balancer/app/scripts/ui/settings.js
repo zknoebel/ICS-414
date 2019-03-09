@@ -3,8 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const defaultSettingsPath = '../resources/data/default.settings.json';
-const settingsPath = '../resources/data/settings.json';
+const defaultSettingsPath = '../../resources/data/default.settings.json';
+const settingsPath = '../../resources/data/settings.json';
 
 /**
  * Returns JavaScript object containing default settings.
