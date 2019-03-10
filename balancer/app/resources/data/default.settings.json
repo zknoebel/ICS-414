@@ -3,5 +3,8 @@
   "workAllowance": 120,
   "activeModeDuration": 30,
   "enableYeelightConnectivity": false,
-  "yeelightLocalAddress": ""
+  "yeelightLocalAddress": "",
+  "brightness": 100,
+  "gamingWorkRatio": 50,
+  "daysBeforeReset": 7
 }

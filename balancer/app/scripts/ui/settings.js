@@ -18,7 +18,14 @@ function getDefaultSettingsSync() {
  * Returns JavaScript object containing settings.
  */
 function getSettingsSync() {
-  const fileContents = fs.readFileSync(path.join(__dirname, settingsPath));
+  let fileContents = "{}";
+  try {
+    fileContents = fs.readFileSync(path.join(__dirname, settingsPath));
+  } catch (err){
+    if (err.code !== 'ENOENT') {
+      throw err;
+    }
+  }
   return JSON.parse(fileContents);
 }
 

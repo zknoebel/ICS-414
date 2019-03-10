@@ -1,6 +1,7 @@
 # Project specific gitignore rules
 
 settings.production.json
+balancer/app/resources/data/settings.json
 
 # Source package directories
 node_modules/
