@@ -17,62 +17,76 @@
 </head>
 
 <body>
-  <!-- Navigation bar -->
-  <div class="ui fixed inverted menu">
-    <div class="ui container">
-      <div class="header item">Balancer</div>
-      <a class="active item" href="#">Home</a>
-      <a class="item" href="./data.html">Data</a>
-      <a class="item" href="./preferences.html">Preferences</a>
-    </div>
+<!-- Navigation bar -->
+<div class="ui fixed inverted menu">
+  <div class="ui container">
+    <div class="header item">Balancer</div>
+    <a class="active item" href="#">Home</a>
+    <a class="item" href="./data.html">Data</a>
+    <a class="item" href="./preferences.html">Preferences</a>
   </div>
+</div>
 
 
-  <div class="ui padded equal height grid app-main app-home-grid">
-    <div class="three wide purple column"></div>
-    <div class="ten wide pink stretched column">
+<div class="ui padded equal height grid app-main app-home-grid">
+  <div class="three wide column"></div>
+  <div class="ten wide pink stretched column">
 
-      <div class="ui grid">
-        <div class="red row"></div>
-        <div class="olive stretched row">
-          <div class="sixteen wide column">
+    <div class="ui grid">
+      <div class="red row">
+        <h2 class="ui center aligned icon header">
+          <i class="lightbulb icon"></i>
+          Record time:
+          <time>00:00:00</time>
+        </h2>
 
-            <div class="ui center aligned equal height grid">
-              <div class="seven wide black column">
+      </div>
+      <div class="olive stretched row">
+        <div class="sixteen wide column">
+          <div class="ui center aligned equal height grid">
 
-                <button id="game-lock-btn" class="ui icon button app-height app-home-lock-btn">
-                  <i class="lock open icon"></i>
-                </button>
-                <button id="game-btn" class="ui negative icon button app-height app-home-toggle-btn">
-                  <i class="gamepad icon"></i>
-                </button>
+            <div class="seven wide black column">
+              <button id="game-lock-btn" class="red ui icon button">
+                <i class="lock open icon"></i>
+              </button>
 
-              </div>
-              <div class="two wide red column"></div>
-              <div class="seven wide black column">
-
-                <button id="study-lock-btn" class="ui icon button app-height app-home-lock-btn">
-                  <i class="lock open icon"></i>
-                </button>
-                <button id="study-btn" class="ui positive icon button app-height app-home-toggle-btn">
-                  <i class="book icon"></i>
-                </button>
-
-              </div>
+              <button id="game-btn" class="ui negative icon button app-height app-home-toggle-btn">
+                <i class="big gamepad icon"></i>
+              </button>
             </div>
 
+            <div class="two wide column"></div>
+
+            <div class="seven wide black column">
+              <button id="study-lock-btn" class="green ui icon button">
+                <i class="lock open icon"></i>
+              </button>
+              <button id="study-btn" class="ui positive icon button app-height app-home-toggle-btn">
+                <i class="big book icon"></i>
+              </button>
+
+            </div>
           </div>
+
         </div>
-        <div class="green row"></div>
+      </div>
+      <div class="green row">
+        <h2 class="ui center aligned icon header">
+          <i class="lightbulb icon"></i>
+          Record time:
+          <time>00:00:00</time>
+        </h2>
       </div>
 
     </div>
-    <div class="three wide purple column"></div>
-  </div>
 
-  <script>
-    require('../../scripts/ui/home.js');
-  </script>
+  </div>
+  <div class="three wide black column"></div>
+</div>
+
+<script>
+  require('../../scripts/ui/home.js');
+</script>
 </body>
 
 </html>
