@@ -3,6 +3,8 @@
 settings.production.json
 balancer/app/resources/data/settings.json
 
+balancer/app/resources/db/usage.db
+
 # Source package directories
 node_modules/
 jspm_packages/

@@ -18,15 +18,26 @@ function getDefaultSettingsSync() {
  * Returns JavaScript object containing settings.
  */
 function getSettingsSync() {
-  let fileContents = "{}";
+  // if user defined settings are non-existent or blank, return default settings
+  let fileContents;
+  let parsedContents;
+  let defaultContents = getDefaultSettingsSync();
   try {
     fileContents = fs.readFileSync(path.join(__dirname, settingsPath));
-  } catch (err){
-    if (err.code !== 'ENOENT') {
+    parsedContents = JSON.parse(fileContents);
+    if (Object.keys(parsedContents).length === 0) {
+      parsedContents = defaultContents;
+    }
+
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      parsedContents = defaultContents;
+    } else {
       throw err;
     }
   }
-  return JSON.parse(fileContents);
+
+  return parsedContents;
 }
 
 /**
@@ -50,6 +61,8 @@ function setSettingsSync(settings) {
 }
 
 module.exports = {
+  getDefaultSettingsSync,
   getBlendedSettingsSync,
+  getSettingsSync,
   setSettingsSync,
 };

@@ -48,3 +48,16 @@ yarn start # Runs script found in package.json though yarn
 ```
 
 When developing, you will need to relaunch this command to reload changes to source, as there is no hot-reloading enabled in current configuration.
+
+
+## Testing
+
+Install QUnit globally with NPM to use its CLI
+```bash
+npm install -g qunit
+```
+
+From the "ICS-414/balancer/app/test" directory run the following command:
+```bash
+qunit '*-test.js
+```

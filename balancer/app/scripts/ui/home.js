@@ -14,10 +14,11 @@
 
   const Datastore = require('nedb');
   const path = require('path');
-  const { getBlendedSettingsSync } = require('./settings');
+  const {getBlendedSettingsSync} = require('./settings');
+  const buttonStateDb = require('./db');
   const Buttons = require('./usageButtons');
 
-  const usageDbLocation = '../resources/db/usage.db';
+  const usageDbLocation = '../../resources/db/usage.db';
   const usageDb = new Datastore({
     filename: path.join(__dirname, usageDbLocation),
     timestampData: true,
@@ -30,12 +31,31 @@
     mode: '',
     locked: false,
   };
+
   const buttons = new Buttons(buttonState);
 
-  function setInitialButtonState() {
-    buttons.setState(buttonState);
+  function setDefaultButtonState() {
+    setButtonState(buttonState)
   }
 
-  setInitialButtonState();
+  function setButtonState(database, buttonState) {
+    // set button state
+    buttons.setState(buttonState);
+
+    // add new button state to the database //todo
+    buttonStateDb.setEntry(usageDb, buttonState)
+  }
+
+  setDefaultButtonState();
+
+  usageDb.loadDatabase(function (err) {
+  });
+
+
+
+  // todo: call setDefaultButtonState() when the program ends so that we don't assume users are continuing their selected activity between runs
+
+
   // END wrapper
 })();
+
