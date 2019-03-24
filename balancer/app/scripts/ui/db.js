@@ -30,29 +30,27 @@ function deleteAllEntries(buttonStateDatabase) {
 /**
  * get an entry from the database
  */
-function getEntry(buttonStateDatabase, timestamp) {
+function getEntry(buttonStateDatabase, timestamp, myFunction) {
   buttonStateDatabase.findOne({toggledAt: timestamp}, function (err, doc) {
     console.log('Found button state:', doc.toggledAt);
-    return doc;
+    myFunction(doc);
   });
 }
 
 /**
  * get the last entry from the database
  */
-function getLastEntry(buttonStateDatabase) {
+function getLastEntry(buttonStateDatabase, myFunction) {
   buttonStateDatabase.find({}).sort({toggledAt: -1}).limit(1).exec(function (err, docs) {
     docs.forEach(function (d) {
       console.log('Found button states:', d.toggledAt);
-      return docs;
     });
+    myFunction(docs);
   });
 }
 
 /**
  * get all entries in the database
- * @param buttonStateDatabase
- * @returns {*}
  */
 function getAllEntries(buttonStateDatabase, myFunction) {
   buttonStateDatabase.find({}, function (err, docs) {
