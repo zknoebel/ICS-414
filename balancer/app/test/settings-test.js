@@ -1,3 +1,4 @@
+const QUnit = require('qunit');
 const settings = require('../scripts/ui/settings');
 
 
@@ -56,7 +57,8 @@ QUnit.test("setSettingsSync test", function (assert) {
   //reset original settings file
   settings.setSettingsSync(originalSettings);
 
-  assert.equal(originalSettingsString, newSettingsString, "Passed!");
+  assert.notEqual(originalSettingsString, newSettingsString, "Passed!");
+  assert.equal(originalSettingsString, JSON.stringify(settings.getSettingsSync()));
 
 
 });

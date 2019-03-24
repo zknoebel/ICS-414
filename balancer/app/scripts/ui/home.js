@@ -22,6 +22,7 @@
   const usageDb = new Datastore({
     filename: path.join(__dirname, usageDbLocation),
     timestampData: true,
+    autoload: true,
   });
   const settings = getBlendedSettingsSync();
 
