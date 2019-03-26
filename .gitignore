@@ -4,7 +4,7 @@ settings.production.json
 balancer/app/resources/data/settings.json
 
 balancer/app/resources/db/usage.db
-balancer/app/test/usage.db
+balancer/app/test/*.db
 
 # Source package directories
 node_modules/

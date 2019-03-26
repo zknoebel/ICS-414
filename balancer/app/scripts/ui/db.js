@@ -1,6 +1,17 @@
 // database/button functions
+const Datastore = require('nedb');
+const path = require('path');
+const buttonStateDb = require('./db');
+const usageDbLocation = '../../resources/db/usage.db';
+const usageDb = new Datastore({
+  filename: path.join(__dirname, usageDbLocation),
+  timestampData: true,
+  autoload: true,
+});
 
-function setEntry(buttonStateDatabase, buttonState) {
+function setEntry(buttonState, buttonStateDatabase) {
+  if (typeof(buttonStateDatabase)==='undefined') buttonStateDatabase = usageDb;
+
   buttonStateDatabase.insert(buttonState, function (err, doc) {
     console.log('Inserted', doc.toggledAt, 'with ID', doc._id);
   });
@@ -9,7 +20,9 @@ function setEntry(buttonStateDatabase, buttonState) {
 /**
  * remove an entry from the database
  */
-function deleteEntry(buttonStateDatabase, timestamp) {
+function deleteEntry(timestamp, buttonStateDatabase) {
+  if (typeof(buttonStateDatabase)==='undefined') buttonStateDatabase = usageDb;
+
   // delete a button state from the database
   buttonStateDatabase.remove({toggledAt: {timestamp}}, function (err, numDeleted) {
     console.log('Deleted', numDeleted, 'button state(s)');
@@ -20,6 +33,8 @@ function deleteEntry(buttonStateDatabase, timestamp) {
  * clear the database
  */
 function deleteAllEntries(buttonStateDatabase) {
+  if (typeof(buttonStateDatabase)==='undefined') buttonStateDatabase = usageDb;
+
   // delete all button states from the database
   buttonStateDatabase.remove({}, {multi: true}, function (err, numDeleted) {
     console.log('Deleted', numDeleted, 'button state(s)');
@@ -30,7 +45,9 @@ function deleteAllEntries(buttonStateDatabase) {
 /**
  * get an entry from the database
  */
-function getEntry(buttonStateDatabase, timestamp, myFunction) {
+function getEntry(timestamp, myFunction, buttonStateDatabase) {
+  if (typeof(buttonStateDatabase)==='undefined') buttonStateDatabase = usageDb;
+
   buttonStateDatabase.findOne({toggledAt: timestamp}, function (err, doc) {
     console.log('Found button state:', doc.toggledAt);
     myFunction(doc);
@@ -40,7 +57,9 @@ function getEntry(buttonStateDatabase, timestamp, myFunction) {
 /**
  * get the last entry from the database
  */
-function getLastEntry(buttonStateDatabase, myFunction) {
+function getLastEntry(myFunction, buttonStateDatabase) {
+  if (typeof(buttonStateDatabase)==='undefined') buttonStateDatabase = usageDb;
+
   buttonStateDatabase.find({}).sort({toggledAt: -1}).limit(1).exec(function (err, docs) {
     docs.forEach(function (d) {
       console.log('Found button states:', d.toggledAt);
@@ -50,10 +69,12 @@ function getLastEntry(buttonStateDatabase, myFunction) {
 }
 
 /**
- * get all entries in the database
+ * get all entries in the database, sorted from earliest to latest
  */
-function getAllEntries(buttonStateDatabase, myFunction) {
-  buttonStateDatabase.find({}, function (err, docs) {
+function getAllEntries(myFunction, buttonStateDatabase) {
+  if (typeof(buttonStateDatabase)==='undefined') buttonStateDatabase = usageDb;
+
+  buttonStateDatabase.find({}).sort({toggledAt: 1}).exec(function (err, docs) {
     docs.forEach(function (d) {
       console.log('Found button state:', d.toggledAt);
     });
@@ -61,7 +82,6 @@ function getAllEntries(buttonStateDatabase, myFunction) {
   });
 
 }
-
 
 module.exports = {
   setEntry,
