@@ -17,54 +17,46 @@
 </head>
 
 <body>
-  <!-- Navigation bar -->
-  <div class="ui fixed inverted menu">
-    <div class="ui container">
-      <div class="header item">Balancer</div>
-      <a class="item" href="./home.html">Home</a>
-      <a class="active item" href="#">Data</a>
-      <a class="item" href="./preferences.html">Preferences</a>
+<!-- Navigation bar -->
+<div class="ui fixed inverted menu">
+  <div class="ui container">
+    <div class="header item">Balancer</div>
+    <a class="item" href="./home.html">Home</a>
+    <a class="active item" href="#">Data</a>
+    <a class="item" href="./preferences.html">Preferences</a>
+  </div>
+</div>
+
+<div class="ui container app-main">
+
+  <form class="ui form">
+    <h2 class="ui dividing header">Balancer Data</h2>
+
+    <div class="field">
+      <div class="ui header">Gaming</div>
+      <div class="sub header">Time Spent Gaming (min)</div>
+      <div class="ui segment" id="gameTime"></div>
+      <div class="sub header">Percentage Spent Gaming</div>
+      <div class="ui segment" id="gamePercent"></div>
     </div>
-  </div>
 
+    <div class="field">
+      <div class="ui header">Work</div>
+      <div class="sub header">Time Spent Working (min)</div>
+      <div class="ui segment" id="studyTime"></div>
+      <div class="sub header">Percentage Spent Working (min)</div>
+      <div class="ui segment" id="studyPercent"></div>
 
+    </div>
 
+  </form>
 
+</div>
 
-
-  <div class="ui container app-main">
-
-    <form class="ui form">
-      <h2 class="ui dividing header">Balancer Data</h2>
-
-      <div class="field">
-        <label>
-          <h5 class="ui header">Gaming
-            <div class="sub header">Time Spent Gaming (min)
-            </div>
-          </h5>
-        </label>
-        <input type="number" name="gamingAllowance" placeholder="connect me">
-      </div>
-
-      <div class="field">
-        <label>
-          <h5 class="ui header">Work
-            <div class="sub header">Time Spent Working (min)
-            </div>
-          </h5>
-        </label>
-        <input type="number" name="workAllowance" placeholder="connect me">
-      </div>
-
-    </form>
-
-  </div>
-
-  <script>
-    // Require files to run in this process
-    require('../../scripts/ui/data.js');
-  </script>
+<script>
+  // Require files to run in this process
+  require('../../scripts/ui/data.js');
+</script>
 
 </body>
 

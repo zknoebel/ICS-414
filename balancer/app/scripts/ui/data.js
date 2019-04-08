@@ -58,9 +58,24 @@ function getTime(mode, buttonStateDatabase) {
   return activityTime;
 }
 
+setUp(undefined);
+
 module.exports = {
   getGameTime,
   getStudyTime,
   getPercentGaming,
   getPercentStudying,
 };
+
+  function setUp(buttonStateDatabase) {
+    var gameTime = document.getElementById('gameTime');
+    gameTime.textContent = getGameTime(buttonStateDatabase);
+    var gamePercent = document.getElementById('gamePercent');
+    gamePercent.textContent = getPercentGaming(buttonStateDatabase);
+
+    var studyTime = document.getElementById('studyTime');
+    studyTime.textContent = getStudyTime(buttonStateDatabase);
+    var studyPercent = document.getElementById('studyPercent');
+    studyPercent.textContent = getPercentStudying(buttonStateDatabase);
+  }
+
