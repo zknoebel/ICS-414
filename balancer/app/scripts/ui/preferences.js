@@ -5,6 +5,7 @@
 
   const { getBlendedSettingsSync, setSettingsSync } = require('./settings');
 
+
   /**
    * Populate each form input with its current value from settings.
    */
@@ -23,6 +24,8 @@
       });
     });
   }
+
+
 
   setFormInputPlaceholders();
 
