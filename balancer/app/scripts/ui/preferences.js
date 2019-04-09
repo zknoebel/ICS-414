@@ -3,7 +3,7 @@
 (() => {
   // START wrapper to preserve global space.
 
-  const { getBlendedSettingsSync, setSettingsSync } = require('./settings');
+  const {getBlendedSettingsSync, setSettingsSync} = require('./settings');
 
 
   /**
@@ -27,21 +27,29 @@
 
 
   function savePreferences() {
+    const settings = getBlendedSettingsSync();
 
-    const settings = document.getElementsByClassName("field");
+    Object.keys(settings).forEach((key) => {
+      const nodes = document.getElementsByName(key);
 
-    settings.forEach(function (field) {
-      console.log(field);
+      nodes.forEach((node) => {
+        if (node.type && node.type === 'checkbox') {
+          settings[key] = node.checked;
+        } else {
+          settings[key] = node.value;
+        }
+      });
     });
-    // setSettingsSync(settings);
+
+    console.log(settings);
+    setSettingsSync(settings);
   }
 
 
   setFormInputPlaceholders();
 
-  if(document.getElementById("theUpdateButton").classList.contains("active")) {
-    savePreferences();
-  }
+  const theUpdateButton = document.getElementById("theUpdateButton");
+  theUpdateButton.onclick = savePreferences;
 
   // END wrapper
 })();
