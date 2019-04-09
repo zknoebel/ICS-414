@@ -1,7 +1,6 @@
 // database/button functions
 const Datastore = require('nedb');
 const path = require('path');
-const buttonStateDb = require('./db');
 const usageDbLocation = '../../resources/db/usage.db';
 const usageDb = new Datastore({
   filename: path.join(__dirname, usageDbLocation),

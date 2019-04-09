@@ -14,7 +14,6 @@
 
   const path = require('path');
   const {getBlendedSettingsSync} = require('./settings');
-  const buttonStateDb = require('./db');
   const Buttons = require('./usageButtons');
 
   const settings = getBlendedSettingsSync();
@@ -29,18 +28,15 @@
   const buttons = new Buttons(buttonState);
 
   function setDefaultButtonState() {
-    setButtonState(buttonState)
-  }
-
-  function setButtonState(database, buttonState) {
-    // set button state
     buttons.setState(buttonState);
-
-    buttonStateDb.setEntry(buttonState)
   }
+
+  buttons.studyLockBtn.onclick = buttons.studyLockBtnFn;
+  buttons.studyBtn.onclick = buttons.studyBtnFn;
+  buttons.gameLockBtn.onclick = buttons.gameLockBtnFn;
+  buttons.gameBtn.onclick = buttons.gameBtnFn;
 
   setDefaultButtonState();
-
   // todo: call setDefaultButtonState() when the program ends so that we don't assume users are continuing their selected activity between runs
 
   // END wrapper

@@ -2,6 +2,7 @@
 
 class Buttons {
   constructor(state) {
+    this.buttonStateDb = require('./db');
     this.gameBtn = document.getElementById('game-btn');
     this.studyBtn = document.getElementById('study-btn');
     this.gameLockBtn = document.getElementById('game-lock-btn');
@@ -11,6 +12,8 @@ class Buttons {
   }
 
   setState(state) {
+    this.buttonStateDb.setEntry(state);
+
     // Reset toggles to default toggle state.
     this.gameBtn.classList.remove('active');
     this.studyBtn.classList.remove('active');
@@ -34,6 +37,47 @@ class Buttons {
       }
     }
   }
+
+  studyLockBtnFn() {
+    const state = {
+      timestamp: new Date(),
+      pressed: true,
+      mode: 'study',
+      locked: true,
+    };
+    this.setState(state);
+  }
+
+  studyBtnFn() {
+    const state = {
+      timestamp: new Date(),
+      pressed: true,
+      mode: 'study',
+      locked: false,
+    };
+    this.setState(state);
+  }
+
+  gameLockBtnFn() {
+    const state = {
+      timestamp: new Date(),
+      pressed: true,
+      mode: 'game',
+      locked: true,
+    };
+    this.setState(state);
+  }
+
+  gameBtnFn() {
+    const state = {
+      timestamp: new Date(),
+      pressed: true,
+      mode: 'game',
+      locked: false,
+    };
+    this.setState(state);
+  }
+
 }
 
 semantic = {};
