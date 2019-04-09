@@ -26,8 +26,22 @@
   }
 
 
+  function savePreferences() {
+
+    const settings = document.getElementsByClassName("field");
+
+    settings.forEach(function (field) {
+      console.log(field);
+    });
+    // setSettingsSync(settings);
+  }
+
 
   setFormInputPlaceholders();
+
+  if(document.getElementById("theUpdateButton").classList.contains("active")) {
+    savePreferences();
+  }
 
   // END wrapper
 })();
