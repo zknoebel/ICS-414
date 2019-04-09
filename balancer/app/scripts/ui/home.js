@@ -31,10 +31,10 @@
     buttons.setState(buttonState);
   }
 
-  buttons.studyLockBtn.onclick = buttons.studyLockBtnFn;
-  buttons.studyBtn.onclick = buttons.studyBtnFn;
-  buttons.gameLockBtn.onclick = buttons.gameLockBtnFn;
-  buttons.gameBtn.onclick = buttons.gameBtnFn;
+  buttons.studyLockBtn.onclick = Buttons.studyLockBtnFn;
+  buttons.studyBtn.onclick = Buttons.studyBtnFn;
+  buttons.gameLockBtn.onclick = Buttons.gameLockBtnFn;
+  buttons.gameBtn.onclick = Buttons.gameBtnFn;
 
   setDefaultButtonState();
   // todo: call setDefaultButtonState() when the program ends so that we don't assume users are continuing their selected activity between runs

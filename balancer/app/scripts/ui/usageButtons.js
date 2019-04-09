@@ -38,44 +38,44 @@ class Buttons {
     }
   }
 
-  studyLockBtnFn() {
+  static studyLockBtnFn() {
     const state = {
       timestamp: new Date(),
       pressed: true,
       mode: 'study',
       locked: true,
     };
-    this.setState(state);
+    require('./db').setEntry(state);
   }
 
-  studyBtnFn() {
+  static studyBtnFn() {
     const state = {
       timestamp: new Date(),
       pressed: true,
       mode: 'study',
       locked: false,
     };
-    this.setState(state);
+    require('./db').setEntry(state);
   }
 
-  gameLockBtnFn() {
+  static gameLockBtnFn() {
     const state = {
       timestamp: new Date(),
       pressed: true,
       mode: 'game',
       locked: true,
     };
-    this.setState(state);
+    require('./db').setEntry(state);
   }
 
-  gameBtnFn() {
+  static gameBtnFn() {
     const state = {
       timestamp: new Date(),
       pressed: true,
       mode: 'game',
       locked: false,
     };
-    this.setState(state);
+    require('./db').setEntry(state);
   }
 
 }
