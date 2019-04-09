@@ -1,6 +1,5 @@
 // Class used for setting button state.
 
-
 class Buttons {
   constructor(state) {
     this.gameBtn = document.getElementById('game-btn');
