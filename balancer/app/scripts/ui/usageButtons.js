@@ -80,6 +80,7 @@ class Buttons {
 
 }
 
+/*
 semantic = {};
 semantic.button = {};
 
@@ -101,15 +102,17 @@ semantic.button.ready = function () {
   $buttons.on('click', handler.activate);
 };
 
+
 // attach ready event
 $(document)
   .ready(semantic.button.ready);
+*/
 
 var time = document.getElementsByTagName('time')[0],
   time2 = document.getElementsByTagName('time2')[0],
-  startGame = document.getElementById('game-lock-btn'),
+  startGame = document.getElementById('game-btn'),
   stopGame = document.getElementById('game-lock-btn'),
-  startStudy = document.getElementById('study-lock-btn'),
+  startStudy = document.getElementById('study-btn'),
   stopStudy = document.getElementById('study-lock-btn'),
   seconds = 0,
   minutes = 0,
@@ -142,16 +145,19 @@ timer();
 
 /* Start game button */
 startGame.onclick = timer;
-/* Start study button */
-startStudy.onclick = timer;
+
 
 /* Stop game button */
 stopGame.onclick = function () {
   clearTimeout(t);
 };
+
+/* Start study button */
+startStudy.onclick = timer;
+
 /* Stop study button */
 stopStudy.onclick = function () {
   clearTimeout(t);
 };
 
-module.exports = Buttons;
+//module.exports = Buttons;
