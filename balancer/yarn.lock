@@ -1693,6 +1693,11 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
+ssdp2@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/ssdp2/-/ssdp2-1.1.2.tgz#48e7e016f073b17ba1558e5235134cfe14cce463"
+  integrity sha1-SOfgFvBzsXuhVY5SNRNM/hTM5GM=
+
 sshpk@^1.7.0:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.16.1.tgz#fb661c0bef29b39db40769ee39fa70093d6f6877"
@@ -1968,3 +1973,10 @@ yauzl@2.4.1:
   integrity sha1-lSj0QtqxsihOWLQ3m7GU4i4MQAU=
   dependencies:
     fd-slicer "~1.0.1"
+
+yeelight2@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/yeelight2/-/yeelight2-1.3.5.tgz#8b2ad14ee57650a67d752cea6e7f04d03ddb606c"
+  integrity sha1-iyrRTuV2UKZ9dSzqbn8E0D3bYGw=
+  dependencies:
+    ssdp2 "^1.1.2"
