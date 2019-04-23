@@ -8,19 +8,23 @@ function sleep(time) {
 }
 
 //todo: recursively retry the call
-function retryPromise(fn) {
-  return Promise.resolve()
-    .then(fn, retryPromise)
-    .then(sleep())
-    .then(light => {
-      light.exit();
-      console.log('Bye! have a nice day :)');
-    });
+function retryPromise(fn, retryNum) {
+  if (typeof retryNum === 'undefined') {
+    retryNum = 5;
+  }
 
+  try {
+    return base(fn)
+  } catch (err) {
+    if (retryNum > 0) {
+      retryNum--;
+      return retryPromise(fn, retryNum);
+    }
+  }
 }
 
 function base(command) {
-  Promise.resolve()
+  return Promise.resolve()
     .then(() => new Promise(accept => {
       Yeelight.discover(function (light) {
         this.close();
@@ -139,12 +143,21 @@ let yeelight = {
   },
 };
 
-// setTimeout(test, 10000);
-// yeelight.setUpTest();
+// turn_on: () => {
+//   base(light => {
+//     light.set_power('on')
+//       .then(response => console.log('turn on light succeed'));
+//     return light;
+//   });
+// },
+
+
+
+ // yeelight.setUpTest();
 
 // yeelight.turn_on();
 // yeelight.turn_off();
 // yeelight.max_green();
-yeelight.max_red();
+// yeelight.max_red();
 
 module.exports = yeelight;
