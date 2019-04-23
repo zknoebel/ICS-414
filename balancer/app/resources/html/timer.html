@@ -35,9 +35,10 @@
     <div class="ui grid">
       <div class="red row">
         <h2 class="ui center aligned icon header">
-          <i class="lightbulb icon"></i>
-          Record time:
-          <time>00:00:00</time>
+          <i class="clock icon"></i>
+          Time Remaining:
+          <p id="startInstructions"></p>
+          <p><span id="gameMin">10</span> minutes : <span id="gameSec">00</span> seconds</p>
         </h2>
 
       </div>
@@ -46,18 +47,17 @@
           <div class="ui center aligned equal height grid">
 
             <div class="seven wide black column">
-              <button id="game-lock-btn" class="red ui toggle icon button">
-                <i class="lock closed icon"></i>
-              </button>
 
               <button id="game-btn" class="ui negative icon button app-height app-home-toggle-btn">
                 <div class="ui red animated button">
                   <div class="visible content">
                     <i class="big gamepad icon"></i>
+                    <p id="startInstructions1">START PLAYING</p>
                   </div>
 
                   <div class="hidden content">
                     <i class="lock open icon"></i>
+                    <p>GO!</p>
                   </div>
                 </div>
               </button>
@@ -65,25 +65,35 @@
 
             <div class="two wide column">
               <select class="two wide column ui dropdown" onchange="location = this.value;">
-                <option value="home.html">Manual</option>
-                <option value="timer.html" >Timer</option>
+                <option value="timer.html">Timer</option>
+                <option value="home.html" >Manual</option>
                 <option value="ratio.html">Ratio</option>
               </select>
+
+              <div class="controls">
+                <select id="times">
+                  <option value="20">20 min </option>
+                  <option value="30">30 min </option>
+                  <option value="10" selected>10 min </option>
+                  <option value="50">50 min </option>
+                </select>
+                <button class="reset-btn">Reset</button>
+              </div>
+
             </div>
 
 
             <div class="seven wide black column">
-              <button id="study-lock-btn" class="green ui icon button">
-                <i class="lock closed icon"></i>
-              </button>
               <button id="study-btn" class="ui positive icon button app-height app-home-toggle-btn">
                 <div class="green ui animated button">
                   <div class="visible content">
                     <i class="big book icon"></i>
+                    <p id="startInstructions2">START WORKING</p>
                   </div>
 
                   <div class="hidden content">
                     <i class="lock open icon"></i>
+                    <p>GO!</p>
                   </div>
                 </div>
               </button>
@@ -95,9 +105,10 @@
       </div>
       <div class="green row">
         <h2 class="ui center aligned icon header">
-          <i class="lightbulb icon"></i>
-          Record time:
-          <time2>00:00:00</time2>
+          <i class="clock icon"></i>
+          Time Remaining:
+          <p id="mobileIns"></p>
+          <p><span id=studyMin>10</span> minutes : <span id="studySec">00</span> seconds</p>
         </h2>
       </div>
 
@@ -108,7 +119,7 @@
 </div>
 
 <script>
-  require('../../scripts/ui/home.js');
+  require('../../scripts/ui/timer.js');
 </script>
 </body>
 
