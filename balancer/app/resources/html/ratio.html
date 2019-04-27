@@ -11,105 +11,44 @@
   <link rel="stylesheet" type="text/css" href="../../../node_modules/semantic-ui-css/semantic.min.css">
   <script>window.$ = window.jQuery = require('../../../node_modules/jquery/dist/jquery.min.js');</script>
   <script src="../../../node_modules/semantic-ui-css/semantic.min.js" type="text/javascript"></script>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles2.css">
 
   <title>Balancer</title>
 </head>
 
 <body>
-<!-- Navigation bar -->
-<div class="ui fixed inverted menu">
-  <div class="ui container">
-    <div class="header item">Balancer</div>
-    <a class="active item" href="#">Home</a>
-    <a class="item" href="./data.html">Data</a>
-    <a class="item" href="./preferences.html">Preferences</a>
+<div class="container">
+  <h1 align="center">Percentage Ratio Between Working Time & Playing Time</h1>
+  <h3 align = "center">Ratio/Second</h3>
+
+  <div align ='center'>
+    <select class="ui-dropdown" onchange="location = this.value;">
+      <option value="ratio.html">Ratio</option>
+      <option value="home.html" >Manual</option>
+      <option value="timer.html">Timer</option>
+    </select>
   </div>
-</div>
 
-
-<div class="ui padded equal height grid app-main app-home-grid">
-  <div class="three wide column"></div>
-  <div class="ten wide pink stretched column">
-
-    <div class="ui grid">
-      <div class="red row">
-        <h2 class="ui center aligned icon header">
-          <i class="clock icon"></i>
-          Record time:
-          <time>00:00:00</time>
-        </h2>
-
-      </div>
-      <div class="olive stretched row">
-        <div class="sixteen wide column">
-          <div class="ui center aligned equal height grid">
-
-            <div class="seven wide black column">
-              <button id="game-lock-btn" class="red ui toggle icon button">
-                <i class="lock closed icon"></i>
-              </button>
-
-              <button id="game-btn" class="ui negative icon button app-height app-home-toggle-btn">
-                <div class="ui red animated button">
-                  <div class="visible content">
-                    <i class="big gamepad icon"></i>
-                  </div>
-
-                  <div class="hidden content">
-                    <i class="lock open icon"></i>
-                  </div>
-                </div>
-              </button>
-            </div>
-
-            <div class="two wide column">
-              <select class="two wide column ui dropdown" onchange="location = this.value;">
-                <option value="ratio.html">Timer</option>
-                <option value="home.html" >Manual</option>
-                <option value="timer.html">Ratio</option>
-              </select>
-            </div>
-
-
-            <div class="seven wide black column">
-              <button id="study-lock-btn" class="green ui icon button">
-                <i class="lock closed icon"></i>
-              </button>
-              <button id="study-btn" class="ui positive icon button app-height app-home-toggle-btn">
-                <div class="green ui animated button">
-                  <div class="visible content">
-                    <i class="big book icon"></i>
-                  </div>
-
-                  <div class="hidden content">
-                    <i class="lock open icon"></i>
-                  </div>
-                </div>
-              </button>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="green row">
-        <h2 class="ui center aligned icon header">
-          <i class="clock icon"></i>
-          Record time:
-          <time2>00:00:00</time2>
-        </h2>
-      </div>
-
-    </div>
-
+  <div id="header">
+    <p>Working Percentage</p>
+    <p>Playing Percentage</p>
   </div>
-  <div class="three wide black column"></div>
+  <div class="timer">
+    <div id="work-time">0 %</div>
+    <div id="break-time">0 %</div>
+  </div>
+  <div id="buttons">
+    <button id="start" class="btn">Start Working</button>
+    <button id="resume" disabled class="btn">Resume Working</button>
+    <button id="break_" disabled class="btn">Start Playing</button>
+    <button id="end" disabled class="btn">End Time</button>
+  </div>
 </div>
 
 <script>
-  require('../../scripts/ui/home.js');
+  require('../../scripts/ui/ratio.js');
 </script>
 </body>
 
 </html>
+
