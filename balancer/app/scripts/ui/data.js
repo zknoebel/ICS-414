@@ -67,15 +67,24 @@ module.exports = {
   getPercentStudying,
 };
 
-  function setUp(buttonStateDatabase) {
-    var gameTime = document.getElementById('gameTime');
+function setUp(buttonStateDatabase) {
+  var gameTime = document.getElementById('gameTime');
+  if (gameTime !== null) {
     gameTime.textContent = getGameTime(buttonStateDatabase);
-    var gamePercent = document.getElementById('gamePercent');
-    gamePercent.textContent = getPercentGaming(buttonStateDatabase);
+  }
 
-    var studyTime = document.getElementById('studyTime');
+  var gamePercent = document.getElementById('gamePercent');
+  if (gamePercent !== null) {
+    gamePercent.textContent = getPercentGaming(buttonStateDatabase);
+  }
+
+  var studyTime = document.getElementById('studyTime');
+  if (studyTime !== null) {
     studyTime.textContent = getStudyTime(buttonStateDatabase);
-    var studyPercent = document.getElementById('studyPercent');
+  }
+  var studyPercent = document.getElementById('studyPercent');
+  if (studyPercent !== null) {
     studyPercent.textContent = getPercentStudying(buttonStateDatabase);
   }
+}
 

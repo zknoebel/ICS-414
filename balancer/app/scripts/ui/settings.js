@@ -63,6 +63,7 @@ function setSettingsSync(settings) {
   const lightBulb = require('../api/yeelight');
   if (updatedSettings.enableYeelightConnectivity){
     lightBulb.turn_on();
+    //set color
   }else {
    lightBulb.turn_off();
   }

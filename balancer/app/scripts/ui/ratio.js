@@ -1,14 +1,21 @@
-var workHours = 0;
-var breakTime = 0;
+let db = require('./data');
 
-var startWorkTimer;
-var startBreakTimer;
-var continueWorkTimer;
+let percent_gaming = db.getPercentGaming();
+let percent_studying = db.getPercentStudying();
 
-document.getElementById('start').onclick = switchGreen;
-document.getElementById('resume').onclick = switchGreen;
-document.getElementById('break_').onclick = switchRed;
-document.getElementById('end').onclick = switchPaleGoldenRod;
+console.log(percent_gaming);
+console.log(percent_studying);
+
+var startStudyTimer;
+var startGameTimer;
+var continueStudyTimer;
+
+let study_btn = document.getElementById('study-lock-btn');
+let game_btn = document.getElementById('game-lock-btn');
+let pause_btn = document.getElementById('pause-btn');
+let reset_btn = document.getElementById('reset-btn');
+let game_time = document.getElementById('game-time');
+let study_time = document.getElementById('study-time');
 
 function switchGreen() {
   document.getElementsByTagName('body')[0].style.backgroundColor = 'green';
@@ -26,93 +33,79 @@ function switchPaleGoldenRod() {
 }
 
 
-document.getElementById('start').addEventListener('click', (e) => {
+study_btn.addEventListener('click', (e) => {
   event.preventDefault();
-  startWorkTimer = setInterval(() => {
-    workHours++;
-    document.getElementById('work-time').innerHTML = timeFormat(workHours);
-  }, 1000)
+  startStudyTimer = setInterval(() => {
+    study_time.innerHTML = db.getPercentStudying();
+  }, 5000)
 
-  document.getElementById('start').disabled = true;
-  document.getElementById('break_').disabled = false;
-  document.getElementById('resume').disabled = true;
-  document.getElementById('end').disabled = false;
+  study_btn.disabled = true;
+  game_btn.disabled = false;
+  pause_btn.disabled = false;
+  reset_btn.disabled = false;
 
-  document.getElementById('break-time').style.borderColor = '#000000'
-  document.getElementById('work-time').style.borderColor = '#6cfc6e';
+  game_time.style.borderColor = '#000000'
+  study_time.style.borderColor = '#6cfc6e';
 });
 
 
-document.getElementById('break_').addEventListener('click', (e) => {
+game_btn.addEventListener('click', (e) => {
   event.preventDefault();
-  clearInterval(startWorkTimer);
-  clearInterval(continueWorkTimer);
+  clearInterval(startStudyTimer);
+  clearInterval(continueStudyTimer);
 
-  startBreakTimer = setInterval(() => {
-    breakTime++;
-    document.getElementById('break-time').innerHTML = timeFormat(breakTime);;
-  }, 1000)
+  startGameTimer = setInterval(() => {
+    game_time.innerHTML = db.getPercentGaming();;
+  }, 5000)
 
-  document.getElementById('work-time').style.borderColor = '#000000'
-  document.getElementById('break-time').style.borderColor = '#f94848';
+  study_time.style.borderColor = '#000000'
+  game_time.style.borderColor = '#f94848';
 
-  document.getElementById('start').disabled = true;
-  document.getElementById('break_').disabled = true;
-  document.getElementById('resume').disabled = false;
-  document.getElementById('end').disabled = false;
-
-});
-
-
-document.getElementById('end').addEventListener('click', (e) => {
-  event.preventDefault();
-  clearInterval(startWorkTimer);
-  clearInterval(continueWorkTimer);
-  clearInterval(startBreakTimer);
-
-  document.getElementById('work-time').innerHTML = "0 %";
-  document.getElementById('break-time').innerHTML = "0 %";
-  workHours = 0;
-  breakTime = 0;
-
-  document.getElementById('work-time').style.borderColor = '#000000';
-  document.getElementById('break-time').style.borderColor = '#000000';
-
-  document.getElementById('start').disabled = false;
-  document.getElementById('break_').disabled = true;
-  document.getElementById('resume').disabled = true;
-  document.getElementById('end').disabled = true;
+  study_btn.disabled = false;
+  game_btn.disabled = true;
+  pause_btn.disabled = false;
+  reset_btn.disabled = false;
 
 });
 
 
-document.getElementById('resume').addEventListener('click', (e) => {
+reset_btn.addEventListener('click', (e) => {
   event.preventDefault();
-  clearInterval(startBreakTimer);
+  clearInterval(startStudyTimer);
+  clearInterval(continueStudyTimer);
+  clearInterval(startGameTimer);
 
-  continueWorkTimer = setInterval(() => {
-    workHours++;
-    document.getElementById('work-time').innerHTML = timeFormat(workHours);
-  }, 1000)
+  study_time.innerHTML = "0 %";
+  game_time.innerHTML = "0 %";
+  studyHours = 0;
+  gameTime = 0;
 
-  document.getElementById('work-time').style.borderColor = '#6cfc6e';
-  document.getElementById('break-time').style.borderColor = '#000000';
-  document.getElementById('start').disabled = true;
-  document.getElementById('break_').disabled = false;
-  document.getElementById('resume').disabled = true;
-  document.getElementById('end').disabled = false;
+  study_time.style.borderColor = '#000000';
+  game_time.style.borderColor = '#000000';
+
+  study_btn.disabled = false;
+  game_btn.disabled = false;
+  pause_btn.disabled = true;
+  reset_btn.disabled = true;
 
 });
 
-// credit for https://stackoverflow.com/a/42091810/7997431
+pause_btn.addEventListener('click', (e) => {
+  event.preventDefault();
+  clearInterval(startGameTimer);
+  clearInterval(startStudyTimer);
 
+  study_time.style.borderColor = '#6cfc6e';
+  game_time.style.borderColor = '#000000';
+  study_btn.disabled = false;
+  game_btn.disabled = false;
+  pause_btn.disabled = true;
+  reset_btn.disabled = false;
 
-var timeFormat = function (counter) { // receive counter from interval function and returns string in time format
-                                      // display data format depending on counter value. With a condition checks weather counter lesser than 10 or not.
-  var display = function(counter) {return counter < 10 ? + counter : counter;};
-  return [ // return an array with three elements ["hours", "minutes", "seconds"]
-    //display(Math.floor(counter / 3600)), // convert seconds to hours
-    //display(Math.floor(counter % 3600 / 60)), // convert seconds to minutes
-    display(Math.floor(counter % 60) + " %"),// the reminds after extracting houts and minuts
-  ].join( '' );// convert the array to string to be displayed.
-}
+});
+
+study_btn.onclick = switchGreen;
+game_btn.onclick = switchRed;
+pause_btn.onclick = switchPaleGoldenRod;
+reset_btn.onclick = switchPaleGoldenRod;
+
