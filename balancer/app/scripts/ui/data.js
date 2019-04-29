@@ -1,32 +1,35 @@
 const db = require('./db');
 
-function getPercentGaming(buttonStateDatabase) {
-  const gameTime = getGameTime(buttonStateDatabase);
-  const studyTime = getStudyTime(buttonStateDatabase);
+function getPercentGaming(percent, buttonStateDatabase) {
+  percent = 50;
+  let gameTime;
+  getGameTime(gameTime, buttonStateDatabase);
+  let studyTime;
+  getStudyTime(studyTime, buttonStateDatabase);
 
-  if (studyTime === 0 && gameTime === 0) {
-    return 50;
-  } else {
-    return 100 * gameTime / (studyTime + gameTime);
-  }
+  setTimeout(() => {
+    if (!(studyTime === 0 && gameTime === 0)) {
+      return 100 * gameTime / (studyTime + gameTime);
+    }
+  });
 }
 
-function getPercentStudying(buttonStateDatabase) {
-  return 100 - getPercentGaming(buttonStateDatabase);
+function getPercentStudying(percent, buttonStateDatabase) {
+  return 100 - getPercentGaming(percent, buttonStateDatabase);
 }
 
 // returns time studying in minutes
-function getStudyTime(buttonStateDatabase) {
-  return getTime("study", buttonStateDatabase);
+function getStudyTime(time, buttonStateDatabase) {
+  return getTime("study", time, buttonStateDatabase);
 }
 
 // returns time playing games in minutes
-function getGameTime(buttonStateDatabase) {
-  return getTime("game", buttonStateDatabase);
+function getGameTime(time, buttonStateDatabase) {
+  return getTime("game", time, buttonStateDatabase);
 }
 
-function getTime(mode, buttonStateDatabase) {
-  let activityTime = 0;
+function getTime(mode, activityTime, buttonStateDatabase) {
+  activityTime = 0;
   db.getAllEntries(function (docs) {
     let start = undefined;
     let end = undefined;
@@ -55,7 +58,6 @@ function getTime(mode, buttonStateDatabase) {
       }
     });
   }, buttonStateDatabase);
-  return activityTime;
 }
 
 setUp(undefined);
@@ -70,21 +72,21 @@ module.exports = {
 function setUp(buttonStateDatabase) {
   var gameTime = document.getElementById('gameTime');
   if (gameTime !== null) {
-    gameTime.textContent = getGameTime(buttonStateDatabase);
+     getGameTime(gameTime.textContent, buttonStateDatabase);
   }
 
   var gamePercent = document.getElementById('gamePercent');
   if (gamePercent !== null) {
-    gamePercent.textContent = getPercentGaming(buttonStateDatabase);
+     getPercentGaming(gamePercent.textContent, buttonStateDatabase);
   }
 
   var studyTime = document.getElementById('studyTime');
   if (studyTime !== null) {
-    studyTime.textContent = getStudyTime(buttonStateDatabase);
+    getStudyTime(studyTime.textContent, buttonStateDatabase);
   }
   var studyPercent = document.getElementById('studyPercent');
   if (studyPercent !== null) {
-    studyPercent.textContent = getPercentStudying(buttonStateDatabase);
+    getPercentStudying(studyPercent.textContent, buttonStateDatabase);
   }
 }
 

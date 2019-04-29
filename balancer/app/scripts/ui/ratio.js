@@ -1,10 +1,5 @@
-let db = require('./data');
-
-let percent_gaming = db.getPercentGaming();
-let percent_studying = db.getPercentStudying();
-
-console.log(percent_gaming);
-console.log(percent_studying);
+let data = require('./data');
+let db = require('./db');
 
 var startStudyTimer;
 var startGameTimer;
@@ -36,7 +31,8 @@ function switchPaleGoldenRod() {
 study_btn.addEventListener('click', (e) => {
   event.preventDefault();
   startStudyTimer = setInterval(() => {
-    study_time.innerHTML = db.getPercentStudying() + ' %';
+     data.getPercentStudying(study_time.innerHTML) + ' %';
+     data.getPercentGaming(game_time.innerHTML) + ' %';
   }, 5000);
 
   study_btn.disabled = true;
@@ -46,6 +42,7 @@ study_btn.addEventListener('click', (e) => {
 
   game_time.style.borderColor = '#000000';
   study_time.style.borderColor = '#6cfc6e';
+  db.setEntry(db.makeButtonState(true, "study", true));
 });
 
 
@@ -55,7 +52,8 @@ game_btn.addEventListener('click', (e) => {
   clearInterval(continueStudyTimer);
 
   startGameTimer = setInterval(() => {
-    game_time.innerHTML = db.getPercentGaming() + ' %';
+     data.getPercentGaming(game_time.innerHTML) + ' %';
+     data.getPercentStudying(study_time.innerHTML) + ' %';
   }, 5000);
 
   study_time.style.borderColor = '#000000';
@@ -66,6 +64,7 @@ game_btn.addEventListener('click', (e) => {
   pause_btn.disabled = false;
   reset_btn.disabled = false;
 
+  db.setEntry(db.makeButtonState(true, "game", true));
 });
 
 
@@ -75,10 +74,8 @@ reset_btn.addEventListener('click', (e) => {
   clearInterval(continueStudyTimer);
   clearInterval(startGameTimer);
 
-  study_time.innerHTML = "0 %";
-  game_time.innerHTML = "0 %";
-  studyHours = 0;
-  gameTime = 0;
+   data.getPercentStudying(study_time.innerHTML) + ' %';
+   data.getPercentGaming(game_time.innerHTML) + ' %';
 
   study_time.style.borderColor = '#000000';
   game_time.style.borderColor = '#000000';
@@ -88,6 +85,8 @@ reset_btn.addEventListener('click', (e) => {
   pause_btn.disabled = true;
   reset_btn.disabled = true;
 
+  db.deleteAllEntries();
+  db.setEntry(db.makeButtonState(false, "", false));
 });
 
 pause_btn.addEventListener('click', (e) => {
@@ -102,6 +101,7 @@ pause_btn.addEventListener('click', (e) => {
   pause_btn.disabled = true;
   reset_btn.disabled = false;
 
+  db.setEntry(db.makeButtonState(false, "", false));
 });
 
 study_btn.onclick = switchGreen;

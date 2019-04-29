@@ -8,6 +8,15 @@ const usageDb = new Datastore({
   autoload: true,
 });
 
+function makeButtonState(pressed, mode, locked) {
+  return {
+    timestamp: new Date(),
+    pressed: pressed,
+    mode: mode,
+    locked: locked,
+  }
+}
+
 function setEntry(buttonState, buttonStateDatabase) {
   if (typeof(buttonStateDatabase)==='undefined') buttonStateDatabase = usageDb;
 
@@ -89,4 +98,5 @@ module.exports = {
   getEntry,
   getLastEntry,
   getAllEntries,
+  makeButtonState
 };
