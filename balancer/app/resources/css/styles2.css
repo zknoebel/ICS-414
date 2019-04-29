@@ -70,19 +70,19 @@ h2{
   font-family: 'Oswald', sans-serif;
 }
 
-#start{
+#study-lock-btn{
   background-color: #4CAF50;
 }
 
-#break_{
+#game-lock-btn{
   background-color: #f94848;
 }
 
-#resume{
+#pause-btn{
   background-color: #4CAF50;
 }
 
-#end{
+#reset-btn{
   background-color: goldenrod;
 }
 

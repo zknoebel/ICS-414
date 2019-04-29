@@ -36,15 +36,15 @@ function switchPaleGoldenRod() {
 study_btn.addEventListener('click', (e) => {
   event.preventDefault();
   startStudyTimer = setInterval(() => {
-    study_time.innerHTML = db.getPercentStudying();
-  }, 5000)
+    study_time.innerHTML = db.getPercentStudying() + ' %';
+  }, 5000);
 
   study_btn.disabled = true;
   game_btn.disabled = false;
   pause_btn.disabled = false;
   reset_btn.disabled = false;
 
-  game_time.style.borderColor = '#000000'
+  game_time.style.borderColor = '#000000';
   study_time.style.borderColor = '#6cfc6e';
 });
 
@@ -55,10 +55,10 @@ game_btn.addEventListener('click', (e) => {
   clearInterval(continueStudyTimer);
 
   startGameTimer = setInterval(() => {
-    game_time.innerHTML = db.getPercentGaming();;
-  }, 5000)
+    game_time.innerHTML = db.getPercentGaming() + ' %';
+  }, 5000);
 
-  study_time.style.borderColor = '#000000'
+  study_time.style.borderColor = '#000000';
   game_time.style.borderColor = '#f94848';
 
   study_btn.disabled = false;
