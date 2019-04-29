@@ -58,6 +58,14 @@ function setSettingsSync(settings) {
   const currentSettings = getSettingsSync();
   const updatedSettings = Object.assign(currentSettings, settings);
   fs.writeFileSync(path.join(__dirname, settingsPath), JSON.stringify(updatedSettings));
+
+  //start using light bulb
+  const lightBulb = require('../api/yeelight');
+  if (updatedSettings.enableYeelightConnectivity){
+    lightBulb.turn_on();
+  }else {
+   lightBulb.turn_off();
+  }
 }
 
 module.exports = {
